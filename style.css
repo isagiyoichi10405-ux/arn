@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
   height: 100vh;
@@ -8,7 +9,7 @@ body {
 
   background-color: #152f41;
   background-image:
-    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(136, 14, 14, 0.04) 1px, transparent 1px);
   background-size: 80px 80px;
 
@@ -18,6 +19,7 @@ body {
   color: white;
   position: relative;
 }
+
 body::after {
   content: "";
   position: absolute;
@@ -30,11 +32,14 @@ body::after {
   transform: translate(-50%, -50%);
   animation: pulse 4s ease-out infinite;
   pointer-events: none;
-}@keyframes pulse {
+}
+
+@keyframes pulse {
   0% {
     transform: translate(-50%, -50%) scale(0.6);
     opacity: 0.6;
   }
+
   100% {
     transform: translate(-50%, -50%) scale(1.4);
     opacity: 0;
@@ -42,9 +47,9 @@ body::after {
 }
 
 .main-container {
-position: relative;
- z-index: 2;
- width: 90%;
+  position: relative;
+  z-index: 2;
+  width: 90%;
   max-width: 480px;
   padding: 32px 28px;
   border-radius: 20px;
@@ -56,7 +61,8 @@ position: relative;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  text-align: center;             /* optional: space between items */
+  text-align: center;
+  /* optional: space between items */
 }
 
 h1 {
@@ -90,4 +96,40 @@ button {
 
 button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 20px rgba(0,114,255,0.4);}
+  box-shadow: 0 10px 20px rgba(0, 114, 255, 0.4);
+}
+
+#arOverlay {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  pointer-events: none;
+}
+
+#arOverlay .hud {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 30px;
+  font-size: 18px;
+  text-align: center;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: fit-content;
+  margin: 0 auto;
+}
+
+#arOverlay .controls {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: auto;
+}
+
+#arOverlay button {
+  width: auto;
+  padding: 12px 24px;
+}

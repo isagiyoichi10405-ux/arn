@@ -1,46 +1,65 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>webAR</title>
+  <title>AR Connect</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 </head>
 
 <body>
 
+  <!-- Search UI -->
   <div class="main-container">
-
-     <h1>📍AR   Connect</h1>
+    <h1>📍AR Connect</h1>
     <p style="font-size: 24px;">Scan • Search • Navigate</p>
-
     <input id="destinationInput" type="text" placeholder="Enter Block or Room" list="blocks">
-
-<datalist id="blocks">
-  <option value="ENTRY">
-  <option value="B0">
-  <option value="B1">
-  <option value="B2">
-  <option value="B3">
-  <option value="B4">
-  <option value="B5">
-  <option value="B6">
-  <option value="B7">
-  <option value="B8">
-  <option value="B9">
-  <option value="B10">
-  <option value="B11">
-  <option value="ADMIN BLOCK">
-  <option value="Girls Hostel">
-  <option value="Boys Hostel">
-</datalist>
-
-<p>📍 Current Location: <span id="locText">Detecting...</span></p>
-
+    <datalist id="blocks">
+      <option value="ENTRY">
+      <option value="B0">
+      <option value="B1">
+      <option value="B2">
+      <option value="B3">
+      <option value="B4">
+      <option value="B5">
+      <option value="B6">
+      <option value="B7">
+      <option value="B8">
+      <option value="B9">
+      <option value="B10">
+      <option value="B11">
+      <option value="ADMIN BLOCK">
+      <option value="Girls Hostel">
+      <option value="Boys Hostel">
+    </datalist>
+    <p>📍 Current Location: <span id="locText">Detecting... (Scan QR)</span></p>
     <button id="startBtn" style="font-size: 24px;">Start Navigation</button>
+  </div>
+
+  <!-- AR UI Overlay -->
+  <div id="arOverlay" style="display: none;">
+    <div class="hud">
+      <div id="infoText">Calculating Route...</div>
     </div>
+    <div class="controls">
+      <button onclick="goSearch()">Back to Search</button>
+    </div>
+  </div>
 
-<script src="script.js"></script>
+  <!-- AR Scene -->
+  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;" style="display: none;">
+    <a-entity id="directionArrow" visible="false">
+      <a-cone color="#00ff00" radius-bottom="0.2" radius-top="0" height="0.5" position="0 0.25 -2"
+        rotation="90 0 0"></a-cone>
+      <a-cylinder color="#00ff00" radius="0.08" height="0.5" position="0 0 -2"></a-cylinder>
+    </a-entity>
+    <a-entity camera></a-entity>
+  </a-scene>
 
+  <script src="script.js"></script>
 
 </body>
+
 </html>
